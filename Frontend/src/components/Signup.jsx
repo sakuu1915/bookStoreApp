@@ -1,16 +1,40 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import {Link, useLocation, useNavigate} from 'react-router-dom'
 import Login from './Login';
 import { useForm } from "react-hook-form"
+import axios from "axios"
+import toast from 'react-hot-toast'
 
 function Signup() {
+  const location=useLocation();
+  const navigate=useNavigate();
+  const form= location.state?.from?.pathname || "/" ;
   const {
       register,
       handleSubmit,
       formState: { errors },
-    } = useForm()
+    } = useForm();
   
-    const onSubmit = (data) => console.log(data)
+    const onSubmit = async (data) => {
+      const userInfo={
+        fullname: data.fullname,
+        email: data.email,
+        password: data.password,
+      };
+      await axios
+      .post("http://localhost:4000/user/signup", userInfo)
+      .then((res)=>{
+        console.log(res.data);
+        if(res.data){
+          toast.success('Signup Successfully');
+          navigate(from,{ replace:true});
+        }
+        localStorage.setItem("Users", JSON.stringify(res.data.user));
+      }).catch((err)=>{
+         console.log(err);
+         toast.error('Error:' + err.response.data.message);
+      });
+    };
   return (
     <>
     <div className="flex h-screen items-center justify-center">
@@ -33,10 +57,10 @@ function Signup() {
                   type="text" 
                   placeholder='Enter your fullname' 
                   className='w-80 px-1 border rounded-md outline-none'
-                  {...register("name", { required: true })}
+                  {...register("fullname", { required: true })}
                    />
                    <br />
-                {errors.name && <span className='text-sm text-red-500'>This field is required</span>}
+                {errors.fullname && <span className='text-sm text-red-500'>This field is required</span>}
              </div>
              <div className='mt-4 space-y-2'>
                 <span>Email</span>
@@ -55,7 +79,7 @@ function Signup() {
                 <span>Password</span>
                 <br/>
                 <input 
-                  type="email" 
+                  type="password" 
                   placeholder='Enter your password' 
                   className='w-80  h-7 px-1 border rounded-md outline-none' 
                   {...register("password", { required: true })}
