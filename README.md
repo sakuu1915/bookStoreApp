@@ -5,47 +5,31 @@ The Book Store Application is a web-based platform developed using the MERN Stac
 
 🚀 Features
 
-.View free books without login
-
-User authentication (Login & Signup)
-
-After login, users can access all books
-
-Responsive and clean UI
-
-Dynamic book data fetched from backend
-
-Secure API communication
+1.View free books without login
+2.User authentication (Login & Signup)
+3.After login, users can access all books
+4.Responsive and clean UI
+5.Dynamic book data fetched from backend
+6.Secure API communication
 
 🛠️ Technologies Used
-
-Frontend
-
-React.js
-
-HTML
-
-CSS
-
-JavaScript
+- Frontend
+- React.js
+- HTML
+- CSS
+- JavaScript
 
 Backend
-
-Node.js
-
-Express.js
+- Node.js
+- Express.js
 
 Database
-
-MongoDB
+- MongoDB
 
 Other Tools
-
-Axios
-
-JWT Authentication
-
-Git & GitHub
+- Axios
+- JWT Authentication
+- Git & GitHub
 
 📂 Project Structure
 BookStore-MERN
@@ -70,7 +54,7 @@ BookStore-MERN
 └── package.json
 ⚙️ Installation & Setup
 1️⃣ Clone the repository
-git clone https://github.com/yourusername/bookstore-mern.git
+git clone https://github.com/sakuu1915/bookStoreApp.git
 2️⃣ Install backend dependencies
 cd backend
 npm install
@@ -78,42 +62,29 @@ npm install
 cd frontend
 npm install
 4️⃣ Configure environment variables
-
 Create a .env file in backend and add:
-
 PORT=5000
 MONGO_URI=your_mongodb_connection_string
 JWT_SECRET=your_secret_key
 5️⃣ Run the application
-
 Start backend:
-
 npm start
-
 Start frontend:
-
 npm run dev
 💻 Usage
 
-Users can browse free books directly from the homepage.
-
-To access all books, users must create an account and log in.
-
-After login, the system displays complete book collection.
+- Users can browse free books directly from the homepage.
+- To access all books, users must create an account and log in.
+- After login, the system displays complete book collection.
 
 📚 Learning Outcomes
 
 Through this project I learned:
-
-Building full-stack applications using MERN Stack
-
-Implementing user authentication
-
-Creating REST APIs using Express.js
-
-Connecting MongoDB with Node.js
-
-Managing frontend state using React.js
+- Building full-stack applications using MERN Stack
+- Implementing user authentication
+- Creating REST APIs using Express.js
+- Connecting MongoDB with Node.js
+- Managing frontend state using React.js
 
 👩‍💻 Author
 
