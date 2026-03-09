@@ -16,7 +16,7 @@ function Contacts() {
         const onSubmit = async (data) => {
   try {
     const res = await axios.post(
-      "http://localhost:4000/api/contact",
+      "https://bookstoreapp-l8lu.onrender.com/api/contact",
       data
     );
 

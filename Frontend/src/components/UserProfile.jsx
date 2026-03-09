@@ -48,7 +48,7 @@ const UserProfile = () => {
         }
         const fetchProfile= async() => {
             try{
-                const res = await axios.get("http://localhost:4000/user/profile")
+                const res = await axios.get("https://bookstoreapp-l8lu.onrender.com/user/profile")
                 setUser(res.data);
             }
             catch(error){
