@@ -1,6 +1,8 @@
 import React from 'react'
 import { useForm } from "react-hook-form"
 import { useNavigate } from 'react-router-dom'
+import axios from "axios";
+import toast from "react-hot-toast";
 
 function Contacts() {
     const navigate= useNavigate();
@@ -11,11 +13,22 @@ function Contacts() {
           formState: { errors },
         } = useForm()
       
-        const onSubmit = (data) => {
-            console.log("Form Data:", data);
-            alert("Message sent successfully! -)");
-            reset();
-          };  
+        const onSubmit = async (data) => {
+  try {
+    const res = await axios.post(
+      "http://localhost:4000/api/contact",
+      data
+    );
+
+    if (res.data.success) {
+      toast.success("Message sent successfully!");
+      reset();
+    }
+  } catch (error) {
+    toast.error("Failed to send message");
+    console.log(error);
+  }
+};
   return (
 <>
     <div className="flex h-screen items-center justify-center bg-gray-100">

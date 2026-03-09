@@ -7,7 +7,7 @@ import toast from 'react-hot-toast'
 
 function Signup() {
   const location=useLocation();
-  const navigate=useNavigate();
+  const navigate = useNavigate();
   const form= location.state?.from?.pathname || "/" ;
   const {
       register,
@@ -27,7 +27,8 @@ function Signup() {
         console.log(res.data);
         if(res.data){
           toast.success('Signup Successfully');
-          navigate(from,{ replace:true});
+          navigate(form,{ replace:true});
+          //navigate("/");
         }
         localStorage.setItem("Users", JSON.stringify(res.data.user));
       }).catch((err)=>{
@@ -92,19 +93,24 @@ function Signup() {
               <button className='bg-pink-600 text-white rounded-md px-3 py-1 hover:bg-pink-700 duration-200'>
                   Signup
               </button>
-              <p className='text-md'>Have account?{" "}
-                 <button  
-                   className="underline text-blue-500 cursor-pointer"
-                   onClick={() => 
-                     document.getElementById("my_modal_3").showModal()
-                   }
-                  >
-                  Login
-              </button>{" "}
-              <Login/>
-              </p>
-             </div>
-               </form>
+               <div className="text-md">
+              Have account?{" "}
+              <button
+                type="button"
+                className="underline text-blue-500 cursor-pointer"
+                onClick={() =>
+                  document.getElementById("my_modal_3").showModal()
+                }
+              >
+                Login
+              </button>
+            </div>
+          </div>
+
+        </form>
+
+        {/* ✅ LOGIN MODAL OUTSIDE FORM */}
+        <Login navigate="/" />
            </div>
           </div>
           

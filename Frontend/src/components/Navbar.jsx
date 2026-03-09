@@ -53,7 +53,20 @@ function Navbar() {
       <li>
         <a>About</a>
       </li>
-
+      <li>
+  {authUser ? (
+    <a href="/profile">Profile</a>
+  ) : (
+    <a
+      onClick={() => {
+        document.getElementById("my_modal_3").showModal();
+      }}
+      className="cursor-pointer text-gray-400"
+    >
+      Profile
+    </a>
+  )}
+</li>
     </>)
   return (
     <>
@@ -129,20 +142,27 @@ function Navbar() {
   </svg>
 </label>
  {
-    authUser? (
-    <Logout/>
-    ):(
-  <div className="">
-    <a className="bg-black text-white px-3 py-2 rounded-md hover:bg-slate-800 duration-300 cursor-pointer"
-     onClick={() => {
-      document.getElementById("my_modal_3").showModal()
-     } }
-    >
-      Login
-    </a>
-    <Login/>
-  </div>
-    )}
+  authUser ? (
+    <div className="flex items-center gap-3">
+      <span className="font-semibold">
+        Hello, {authUser.fullname}
+      </span>
+      <Logout />
+    </div>
+  ) : (
+    <div>
+      <a
+        className="bg-black text-white px-3 py-2 rounded-md hover:bg-slate-800 duration-300 cursor-pointer"
+        onClick={() => {
+          document.getElementById("my_modal_3").showModal()
+        }}
+      >
+        Login
+      </a>
+      <Login />
+    </div>
+  )
+}
   </div>
  </div>
 </div>

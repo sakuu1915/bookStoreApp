@@ -4,6 +4,8 @@ import dotenv from "dotenv";
 import cors from "cors";
 import bookRoute from "./routes/book.route.js";
 import userRoute from "./routes/user.route.js"
+import contactRoute from "./routes/contact.route.js";
+import profileRoute from "./routes/profile.route.js";
 
 const app = express();
 app.use(cors());
@@ -25,6 +27,8 @@ mongoose.connect(URI)
 // defining routes
 app.use("/book",bookRoute);
 app.use("/user",userRoute)
+app.use("/api", contactRoute);
+app.use("/user/profile", profileRoute);
 app.listen(PORT, () => {
   console.log(`Server is listening on port ${PORT}`)
 })
